@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro Slideshow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom Fade Animation */
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-black">
+    <div id="slideshow-container" class="relative w-full h-screen overflow-hidden">
+        <!-- Slide 1 -->
+        <div class="slide absolute w-full h-full flex items-center justify-center opacity-0 animate-fade">
+            <img src="img/slide1.jpg" alt="Slide 1" class="object-cover w-full h-full absolute">
+            <div class="relative z-10 text-white text-center">
+                <h1 class="text-3xl font-bold">Welcome to Our Website</h1>
+                <p class="mt-4 text-lg">Experience the best we have to offer.</p>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide absolute w-full h-full flex items-center justify-center opacity-0 animate-fade">
+            <img src="img/slide2.jpg" alt="Slide 2" class="object-cover w-full h-full absolute">
+            <div class="relative z-10 text-white text-center">
+                <h1 class="text-3xl font-bold">Discover Amazing Features</h1>
+                <p class="mt-4 text-lg">Innovative solutions for your needs.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide absolute w-full h-full flex items-center justify-center opacity-0 animate-fade">
+            <img src="img/slide3.jpg" alt="Slide 3" class="object-cover w-full h-full absolute">
+            <div class="relative z-10 text-white text-center">
+                <h1 class="text-3xl font-bold">Join Us Today</h1>
+                <p class="mt-4 text-lg">Be part of an amazing journey.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide absolute w-full h-full flex items-center justify-center opacity-0 animate-fade">
+            <img src="img/slide4.jpg" alt="Slide 4" class="object-cover w-full h-full absolute">
+            <div class="relative z-10 text-white text-center">
+                <h1 class="text-3xl font-bold">Explore Our Services</h1>
+                <p class="mt-4 text-lg">Tailored solutions for your business.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide absolute w-full h-full flex items-center justify-center opacity-0 animate-fade">
+            <img src="img/slide5.jpg" alt="Slide 5" class="object-cover w-full h-full absolute">
+            <div class="relative z-10 text-white text-center">
+                <h1 class="text-3xl font-bold">Thank You for Visiting</h1>
+                <p class="mt-4 text-lg">We look forward to working with you.</p>
+            </div>
+        </div>
+
+        <!-- Continue Button -->
+        <button id="continue-button"
+            class="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-4 rounded-full hover:from-blue-400 hover:to-purple-500 transition-all duration-300 ease-in-out shadow-2xl text-lg font-semibold tracking-wide">
+            Continue to Website
+        </button>
+    </div>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slide");
+        const continueButton = document.getElementById("continue-button");
+
+        function showSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle("opacity-100", index === slideIndex);
+                slide.classList.toggle("opacity-0", index !== slideIndex);
+            });
+            slideIndex = (slideIndex + 1) % slides.length;
+        }
+
+        // Start Slideshow
+        setInterval(showSlides, 3000); // Change slides every 3 seconds
+        showSlides();
+
+        // Navigate to Main Website
+        continueButton.addEventListener("click", () => {
+            window.location.href = "main.html"; // Replace with your website's URL
+        });
+    </script>
+</body>
+
+</html>
